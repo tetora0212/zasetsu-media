@@ -1,0 +1,17 @@
+.footer {
+  border-top: 1px solid var(--border);
+  background-color: var(--surface);
+  padding: 3rem 1.5rem;
+  margin-top: auto;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.copyright {
+  color: var(--foreground-tertiary);
+  font-size: 0.875rem;
+}

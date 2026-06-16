@@ -1,0 +1,113 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ヒーローセクション */
+.hero {
+  width: 100%;
+  padding: 6rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.heroContent {
+  max-width: 800px;
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--foreground-secondary);
+}
+
+/* 記事一覧セクション */
+.episodesSection {
+  width: 100%;
+  max-width: 1000px;
+  padding: 4rem 1.5rem;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* CTAセクション */
+.ctaSection {
+  width: 100%;
+  padding: 5rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  background-color: var(--background);
+  border-top: 1px solid var(--border);
+}
+
+.ctaContent {
+  max-width: 600px;
+  text-align: center;
+  background-color: var(--surface);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.ctaTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.ctaDescription {
+  font-size: 1rem;
+  color: var(--foreground-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.ctaButton {
+  font-size: 1rem;
+  padding: 0.8rem 2rem;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.25rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
