@@ -1,9 +1,13 @@
 import styles from "./page.module.css";
 import Button from "../components/Button";
 import EpisodeCard from "../components/EpisodeCard";
-import { episodes } from "../data/episodes";
+import { getList } from "../lib/microcms";
 
-export default function Home() {
+export const revalidate = 60; // 60秒ごとに再検証（ISR）
+
+export default async function Home() {
+  const { contents: episodes } = await getList();
+
   return (
     <div className={styles.container}>
       {/* ヒーローセクション */}
@@ -23,9 +27,15 @@ export default function Home() {
           <h2 className={styles.sectionTitle}>新着エピソード</h2>
         </div>
         <div className={styles.grid}>
-          {episodes.map((episode) => (
-            <EpisodeCard key={episode.id} episode={episode} />
-          ))}
+          {episodes.length > 0 ? (
+            episodes.map((episode) => (
+              <EpisodeCard key={episode.id} episode={episode} />
+            ))
+          ) : (
+            <p style={{ color: "var(--foreground-tertiary)" }}>
+              まだエピソードがありません。
+            </p>
+          )}
         </div>
       </section>
 
