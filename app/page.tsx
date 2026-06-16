@@ -37,7 +37,7 @@ export default function Home() {
             あなたの経験が、今同じように壁にぶつかり悩んでいる誰かの希望になるかもしれません。<br />
             飾らないリアルなストーリーをお待ちしています。
           </p>
-          <Button variant="primary" className={styles.ctaButton}>
+          <Button href="https://forms.gle/2VvKBzg1YsEhvMWUA" variant="primary" className={styles.ctaButton}>
             エピソードを投稿する
           </Button>
         </div>

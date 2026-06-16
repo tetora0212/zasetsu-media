@@ -10,7 +10,7 @@ export default function Header() {
           挫折エピソード共有メディア
         </Link>
         <nav className={styles.nav}>
-          <Button href="#share" variant="primary">エピソードを共有</Button>
+          <Button href="https://forms.gle/2VvKBzg1YsEhvMWUA" variant="primary">エピソードを共有</Button>
         </nav>
       </div>
     </header>

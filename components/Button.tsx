@@ -14,6 +14,16 @@ export default function Button({ children, variant = "primary", href, onClick, c
   const btnClass = `${styles.button} ${styles[variant]} ${className}`;
 
   if (href) {
+    const isExternal = href.startsWith("http");
+
+    if (isExternal) {
+      return (
+        <a href={href} className={btnClass} target="_blank" rel="noopener noreferrer">
+          {children}
+        </a>
+      );
+    }
+
     return (
       <Link href={href} className={btnClass}>
         {children}
