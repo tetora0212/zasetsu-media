@@ -17,6 +17,8 @@ export type Episode = {
   wall?: string;
   action?: string;
   lesson?: string;
+  isFeature?: boolean;
+  body?: string;
 };
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {

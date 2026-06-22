@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./page.module.css";
 import Button from "../components/Button";
 import EpisodeCard from "../components/EpisodeCard";
@@ -5,8 +6,21 @@ import { getList } from "../lib/microcms";
 
 export const revalidate = 60; // 60秒ごとに再検証（ISR）
 
-export default async function Home() {
-  const { contents: episodes } = await getList();
+export default async function Home({ searchParams }: { searchParams: Promise<{ tag?: string }> }) {
+  const { contents: allEpisodes } = await getList();
+  const { tag: selectedTag } = await searchParams;
+
+  // 全エピソードからユニークなタグを抽出
+  const allTags = Array.from(
+    new Set(
+      allEpisodes.flatMap(ep => ep.tags ? ep.tags.split(",").map(t => t.trim()) : [])
+    )
+  ).filter(Boolean);
+
+  // 選択されたタグで絞り込み
+  const displayEpisodes = selectedTag 
+    ? allEpisodes.filter(ep => ep.tags && ep.tags.split(",").map(t => t.trim()).includes(selectedTag))
+    : allEpisodes;
 
   return (
     <div className={styles.container}>
@@ -24,16 +38,40 @@ export default async function Home() {
       {/* 記事一覧セクション */}
       <section className={styles.episodesSection}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>新着エピソード</h2>
+          <h2 className={styles.sectionTitle}>
+            {selectedTag ? `「${selectedTag}」のエピソード` : "新着エピソード"}
+          </h2>
+          
+          {/* タグフィルター */}
+          {allTags.length > 0 && (
+            <div className={styles.tagFilter}>
+              <Link 
+                href="/" 
+                className={`${styles.filterTag} ${!selectedTag ? styles.activeTag : ""}`}
+              >
+                すべて
+              </Link>
+              {allTags.map(tag => (
+                <Link 
+                  key={tag} 
+                  href={`/?tag=${encodeURIComponent(tag)}`}
+                  className={`${styles.filterTag} ${selectedTag === tag ? styles.activeTag : ""}`}
+                >
+                  {tag}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
+
         <div className={styles.grid}>
-          {episodes.length > 0 ? (
-            episodes.map((episode) => (
+          {displayEpisodes.length > 0 ? (
+            displayEpisodes.map((episode) => (
               <EpisodeCard key={episode.id} episode={episode} />
             ))
           ) : (
             <p style={{ color: "var(--foreground-tertiary)" }}>
-              まだエピソードがありません。
+              該当するエピソードがありません。
             </p>
           )}
         </div>

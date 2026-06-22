@@ -57,29 +57,46 @@ export default async function EpisodePage({ params }: EpisodePageProps) {
 
         {/* 記事本文 */}
         <div className={styles.content}>
-          <section className={styles.section}>
-            <h2 className={styles.heading}>直面した壁</h2>
+          {episode.isFeature && episode.body ? (
+            /* 長文の特集記事の場合 */
             <div 
-              className={styles.paragraph}
-              dangerouslySetInnerHTML={{ __html: episode.wall || "本文がありません" }} 
+              className={styles.featureBody}
+              dangerouslySetInnerHTML={{ __html: episode.body }}
             />
-          </section>
+          ) : (
+            /* 短文のエピソードの場合 */
+            <>
+              {episode.wall && (
+                <section className={styles.section}>
+                  <h2 className={styles.heading}>直面した壁</h2>
+                  <div 
+                    className={styles.paragraph}
+                    dangerouslySetInnerHTML={{ __html: episode.wall }} 
+                  />
+                </section>
+              )}
 
-          <section className={styles.section}>
-            <h2 className={styles.heading}>どう対処したか</h2>
-            <div 
-              className={styles.paragraph}
-              dangerouslySetInnerHTML={{ __html: episode.action || "本文がありません" }} 
-            />
-          </section>
+              {episode.action && (
+                <section className={styles.section}>
+                  <h2 className={styles.heading}>どう対処したか</h2>
+                  <div 
+                    className={styles.paragraph}
+                    dangerouslySetInnerHTML={{ __html: episode.action }} 
+                  />
+                </section>
+              )}
 
-          <section className={styles.section}>
-            <h2 className={styles.heading}>今振り返って伝えたいこと</h2>
-            <div 
-              className={styles.paragraph}
-              dangerouslySetInnerHTML={{ __html: episode.lesson || "本文がありません" }} 
-            />
-          </section>
+              {episode.lesson && (
+                <section className={styles.section}>
+                  <h2 className={styles.heading}>今振り返って伝えたいこと</h2>
+                  <div 
+                    className={styles.paragraph}
+                    dangerouslySetInnerHTML={{ __html: episode.lesson }} 
+                  />
+                </section>
+              )}
+            </>
+          )}
         </div>
 
         {/* フッターリンク */}

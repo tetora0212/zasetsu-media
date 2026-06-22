@@ -123,6 +123,49 @@
   line-height: 1;
 }
 
+/* 特集記事（長文）の本文スタイル */
+.featureBody {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--foreground);
+}
+
+.featureBody h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.featureBody h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.featureBody p {
+  margin-bottom: 1.5rem;
+}
+
+.featureBody img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.featureBody ul, .featureBody ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.featureBody li {
+  margin-bottom: 0.5rem;
+}
+
 .backLinkContainer {
   margin-top: 5rem;
   padding-top: 2rem;
