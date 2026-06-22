@@ -57,28 +57,70 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--surface);
+  border-radius: 24px;
+  position: relative;
 }
 
 .heading {
-  font-size: 1.5rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  color: var(--foreground);
-  border-left: 4px solid var(--accent);
-  padding-left: 1rem;
-  line-height: 1.2;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
 }
 
 .paragraph {
-  font-size: 1.125rem;
+  font-size: 1.5rem;
+  font-weight: 600;
   line-height: 1.8;
-  color: var(--foreground-secondary);
+  color: var(--foreground);
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+}
+
+.paragraph p {
+  margin-bottom: 1rem;
+}
+.paragraph p:last-child {
+  margin-bottom: 0;
+}
+
+/* クオーテーションマークの装飾 */
+.paragraph::before {
+  content: '“';
+  font-size: 6rem;
+  color: var(--border);
+  position: absolute;
+  top: -3rem;
+  left: -3rem;
+  font-family: serif;
+  opacity: 0.5;
+  z-index: -1;
+  line-height: 1;
+}
+
+.paragraph::after {
+  content: '”';
+  font-size: 6rem;
+  color: var(--border);
+  position: absolute;
+  bottom: -4.5rem;
+  right: -3rem;
+  font-family: serif;
+  opacity: 0.5;
+  z-index: -1;
+  line-height: 1;
 }
 
 .backLinkContainer {

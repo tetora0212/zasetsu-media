@@ -54,9 +54,9 @@
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
+  column-count: 3;
+  column-gap: 2rem;
+  width: 100%;
 }
 
 /* CTAセクション */
@@ -98,6 +98,12 @@
 }
 
 /* レスポンシブ */
+@media (max-width: 1024px) {
+  .grid {
+    column-count: 2;
+  }
+}
+
 @media (max-width: 768px) {
   .title {
     font-size: 2.25rem;
@@ -108,6 +114,6 @@
   }
 
   .grid {
-    grid-template-columns: 1fr;
+    column-count: 1;
   }
 }
